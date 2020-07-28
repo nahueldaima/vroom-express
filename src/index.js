@@ -167,6 +167,7 @@ const execCallback = function(req, res) {
   ) {
     reqOptions.push('-g');
   }
+  console.log(reqOptions);
 
   const timestamp = Math.floor(Date.now() / 1000); //eslint-disable-line
   const fileName = args.logdir + '/' + timestamp + '_' + uuid.v1() + '.json';
@@ -212,6 +213,7 @@ const execCallback = function(req, res) {
   });
 
   vroom.on('close', (code, signal) => {
+    console.log(code, signal);
     switch (code) {
       case config.vroomErrorCodes.ok:
         res.status(HTTP_OK_CODE);
